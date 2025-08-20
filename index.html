@@ -137,8 +137,8 @@
                                 <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-sky-800 text-sm">Power</span>
                             </div>
                              <div class="absolute top-[55%] left-1/2 -translate-x-1/2 w-28 h-10 md:w-32 md:h-12 bg-indigo-200 rounded anatomy-part" data-part="avionics">
-                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-indigo-800 text-sm">Avionics</span>
-                            </div>
+                                 <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-indigo-800 text-sm">Avionics</span>
+                             </div>
                             <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-24 h-16 md:w-32 md:h-20 bg-amber-200 rounded-lg anatomy-part" data-part="payload">
                                  <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-amber-800">Payload</span>
                             </div>
@@ -320,9 +320,9 @@ document.addEventListener('DOMContentLoaded', () => {
             spec: 'Motor: 10.6kg Max Thrust, IP55 | ESC: 80A Continuous | Prop: 28-inch Carbon Fiber'
         },
         power: {
-            title: 'Power: Tattu 12S Li-Ion Pack',
-            content: `A <strong>Gens Ace Tattu 12S 22,000mAh 25C Li-Ion</strong> battery pack is chosen over standard LiPo. Li-Ion offers superior energy density (185 Wh/kg), which is the single most important factor for maximizing flight time. Its lower discharge rate is perfectly sufficient for the steady power draw of an inspection mission.`,
-            spec: 'Capacity: 22,000mAh | Voltage: 44.4V | Weight: ~4.0kg | Energy: 976.8 Wh'
+            title: 'Power System: Battery & Distribution',
+            content: `A <strong>Gens Ace Tattu 12S 22,000mAh 25C Li-Ion</strong> battery pack is chosen over standard LiPo for its superior energy density (185 Wh/kg). Power from this pack is managed by a <strong>Holybro PM02D Power Distribution Board (PDB)</strong>, which safely distributes clean, regulated power to the ESCs and avionics while providing critical voltage and current telemetry to the flight controller.`,
+            spec: 'Battery: 22,000mAh, 44.4V, 976.8 Wh | PDB: Holybro PM02D, 14S Max, 120A Cont.'
         },
         payload: {
             title: 'Payload: DJI H20T & Velodyne Puck',
