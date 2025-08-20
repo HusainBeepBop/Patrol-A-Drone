@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrol 1: Interactive Design Brief</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+        .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #0284c7; /* sky-600 */
+            border-color: #0284c7; /* sky-600 */
+        }
+        .kpi-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .anatomy-part {
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .anatomy-part:hover {
+            background-color: #e0f2fe; /* sky-100 */
+        }
+        .anatomy-part.active {
+            background-color: #bae6fd; /* sky-200 */
+            border-color: #0284c7; /* sky-600 */
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 320px;
+            width: 100%;
+            max-width: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-slate-800">Patrol 1</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#mission" class="nav-link text-slate-600 font-medium px-3 py-2 rounded-md text-sm border-b-2 border-transparent">Mission</a>
+                        <a href="#anatomy" class="nav-link text-slate-600 font-medium px-3 py-2 rounded-md text-sm border-b-2 border-transparent">Anatomy</a>
+                        <a href="#performance" class="nav-link text-slate-600 font-medium px-3 py-2 rounded-md text-sm border-b-2 border-transparent">Performance</a>
+                        <a href="#testing" class="nav-link text-slate-600 font-medium px-3 py-2 rounded-md text-sm border-b-2 border-transparent">Testing</a>
+                        <a href="#emi" class="nav-link text-slate-600 font-medium px-3 py-2 rounded-md text-sm border-b-2 border-transparent">EMI Shield</a>
+                        <a href="#cost" class="nav-link text-slate-600 font-medium px-3 py-2 rounded-md text-sm border-b-2 border-transparent">Cost</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="mission" class="py-16 sm:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">Engineering a New Standard for Infrastructure Safety</h1>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">The Patrol 1 is a specialized quadrotor UAS designed to conduct safe, efficient, and detailed inspections of high-voltage power lines. This interactive brief explores the key engineering decisions and specific component selections that enable it to operate in hazardous environments, achieve long flight times, and capture critical data for predictive maintenance.</p>
+                
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+                    <div class="kpi-card bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold text-sky-600">> 45<span class="text-xl">min</span></div>
+                        <div class="mt-1 text-sm font-medium text-slate-500">Flight Endurance</div>
+                    </div>
+                    <div class="kpi-card bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold text-sky-600">12.55<span class="text-xl">kg</span></div>
+                        <div class="mt-1 text-sm font-medium text-slate-500">All-Up Weight</div>
+                    </div>
+                    <div class="kpi-card bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold text-sky-600">3.4:1</div>
+                        <div class="mt-1 text-sm font-medium text-slate-500">Thrust-to-Weight</div>
+                    </div>
+                    <div class="kpi-card bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold text-sky-600">10<span class="text-xl">km</span></div>
+                        <div class="mt-1 text-sm font-medium text-slate-500">Operational Range</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="anatomy" class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Interactive Anatomy</h2>
+                    <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">Explore the core subsystems of the Patrol 1. Click on each component to reveal the design rationale and selected hardware that make this drone a specialized industrial tool.</p>
+                </div>
+
+                <div class="mt-12 lg:grid lg:grid-cols-3 lg:gap-8 items-center">
+                    <div class="lg:col-span-1">
+                        <div id="details-panel" class="bg-white p-6 rounded-lg shadow-md border border-slate-200 min-h-[360px]">
+                            </div>
+                    </div>
+                    <div class="mt-10 lg:mt-0 lg:col-span-2 flex justify-center items-center">
+                        <div class="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 bg-slate-300 rounded-lg anatomy-part" data-part="frame">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-slate-700">Frame</span>
+                            </div>
+                            <div class="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold">Motor</span>
+                            </div>
+                            <div class="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold">Motor</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold">Motor</span>
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold">Motor</span>
+                            </div>
+                            <div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-20 h-10 md:w-24 md:h-12 bg-sky-200 rounded anatomy-part" data-part="power">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-sky-800 text-sm">Power</span>
+                            </div>
+                             <div class="absolute top-[55%] left-1/2 -translate-x-1/2 w-28 h-10 md:w-32 md:h-12 bg-indigo-200 rounded anatomy-part" data-part="avionics">
+                                <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-indigo-800 text-sm">Avionics</span>
+                            </div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-24 h-16 md:w-32 md:h-20 bg-amber-200 rounded-lg anatomy-part" data-part="payload">
+                                 <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-amber-800">Payload</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="py-16 sm:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Performance Dashboard</h2>
+                    <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">Visualizing the numbers that matter. This section breaks down the key performance calculations that validate the drone's ability to meet its demanding mission requirements for weight, power, and endurance.</p>
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                        <h3 class="font-semibold text-lg text-slate-800 text-center">All-Up Weight (AUW) Breakdown</h3>
+                        <p class="text-sm text-slate-500 text-center mt-1">Total: 12.55 kg. Hover to see component weights.</p>
+                        <div class="chart-container mt-4">
+                            <canvas id="weightChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-semibold text-lg text-slate-800">Thrust-to-Weight Ratio (TWR)</h3>
+                            <p class="text-sm text-slate-500 mt-1">A high TWR ensures control authority and safety in high winds.</p>
+                            <div class="mt-4 space-y-2">
+                                <div class="flex justify-between text-sm font-medium text-slate-600">
+                                    <span>Calculated TWR</span>
+                                    <span>3.4:1</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-4">
+                                    <div class="bg-sky-500 h-4 rounded-full" style="width: 85%;"></div>
+                                </div>
+                                <div class="flex justify-between text-xs text-slate-400">
+                                    <span>Recommended Min (2:1)</span>
+                                    <span>Max Thrust (4.2:1)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-semibold text-lg text-slate-800">Endurance Calculation</h3>
+                             <p class="text-sm text-slate-500 mt-1">Achieving >45 min flight time is critical for mission efficiency.</p>
+                            <div class="mt-4 flex items-center justify-around text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-sky-600">1046 W</div>
+                                    <div class="text-sm text-slate-500">Power to Hover</div>
+                                </div>
+                                <div class="text-slate-300 text-2xl font-light">+</div>
+                                <div>
+                                    <div class="text-2xl font-bold text-sky-600">17.6 Ah</div>
+                                    <div class="text-sm text-slate-500">Usable Battery</div>
+                                </div>
+                                <div class="text-slate-300 text-2xl font-light">=</div>
+                                <div>
+                                    <div class="text-2xl font-bold text-amber-500">~45 min</div>
+                                    <div class="text-sm text-slate-500">Flight Time</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testing" class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Testing Plan & Timeline</h2>
+                    <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">A rigorous testing protocol is essential to validate performance and ensure safety. Our plan is divided into three key phases, culminating in a full mission simulation.</p>
+                </div>
+
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <ol class="relative border-l border-slate-200">
+                        <li class="mb-10 ml-4">
+                            <div class="absolute w-3 h-3 bg-sky-600 rounded-full mt-1.5 -left-1.5 border border-white"></div>
+                            <time class="mb-1 text-sm font-semibold text-slate-400">Phase 1: Component & Subsystem Tests (Weeks 1-2)</time>
+                            <h3 class="text-lg font-semibold text-slate-900">Initial Bench Testing</h3>
+                            <ul class="mt-2 text-sm text-slate-600 list-disc list-inside space-y-1">
+                                <li><strong>Propulsion System:</strong> Test motor/ESC/propeller combinations on a thrust stand to verify calculated thrust and efficiency curves.</li>
+                                <li><strong>Power System:</strong> Perform battery discharge tests to validate actual capacity and internal resistance.</li>
+                                <li><strong>Avionics:</strong> Calibrate all sensors (IMU, compass, GPS), and perform hardware-in-the-loop (HITL) simulations.</li>
+                            </ul>
+                        </li>
+                        <li class="mb-10 ml-4">
+                            <div class="absolute w-3 h-3 bg-sky-600 rounded-full mt-1.5 -left-1.5 border border-white"></div>
+                            <time class="mb-1 text-sm font-semibold text-slate-400">Phase 2: Airframe & Flight Control (Weeks 3-4)</time>
+                            <h3 class="text-lg font-semibold text-slate-900">Hover & Low-Altitude Flight Testing</h3>
+                            <ul class="mt-2 text-sm text-slate-600 list-disc list-inside space-y-1">
+                                <li><strong>Initial Hover:</strong> Verify stability and control with minimal payload. Tune PID gains for optimal performance.</li>
+                                <li><strong>Endurance Test:</strong> Conduct a static hover test to confirm the calculated flight time.</li>
+                                <li><strong>Safety System Checks:</strong> Test failsafe protocols (e.g., Return-to-Launch, geofencing).</li>
+                            </ul>
+                        </li>
+                        <li class="ml-4">
+                            <div class="absolute w-3 h-3 bg-sky-600 rounded-full mt-1.5 -left-1.5 border border-white"></div>
+                            <time class="mb-1 text-sm font-semibold text-slate-400">Phase 3: Mission Integration & EMI (Weeks 5-6)</time>
+                            <h3 class="text-lg font-semibold text-slate-900">Full-Mission Simulation</h3>
+                            <ul class="mt-2 text-sm text-slate-600 list-disc list-inside space-y-1">
+                                <li><strong>Payload Test:</strong> Integrate and test the DJI H20T and Velodyne Puck, verifying data capture and transmission.</li>
+                                <li><strong>Operational Simulation:</strong> Conduct a simulated power line inspection flight path, including autonomous waypoints and data logging.</li>
+                                <li><strong>EMI Field Test:</strong> Perform controlled tests near a low-voltage power line to assess the effectiveness of the EMI mitigation strategies.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="emi" class="py-16 sm:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Mission Critical: Defeating EMI</h2>
+                    <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">Operating near high-voltage power lines creates extreme electromagnetic interference (EMI), which can disable a drone's navigation. Patrol 1 uses a multi-layered defense system to ensure safety and stability.</p>
+                </div>
+                <div class="mt-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-100 text-sky-600 mx-auto text-xl font-bold">1</div>
+                        <h3 class="mt-4 font-semibold text-slate-800">Smart Placement</h3>
+                        <p class="mt-1 text-sm text-slate-500">The compass/GPS module is mounted on a mast, physically distant from the drone's own high-current wires.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-100 text-sky-600 mx-auto text-xl font-bold">2</div>
+                        <h3 class="mt-4 font-semibold text-slate-800">Physical Shielding</h3>
+                        <p class="mt-1 text-sm text-slate-500">A layer of mu-metal shielding around the flight controller helps to attenuate low-frequency magnetic fields.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-100 text-sky-600 mx-auto text-xl font-bold">3</div>
+                        <h3 class="mt-4 font-semibold text-slate-800">Advanced Software</h3>
+                        <p class="mt-1 text-sm text-slate-500">ArduPilot's EKF3 algorithm intelligently rejects bad compass data, relying on GPS and IMU for stable flight.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-100 text-sky-600 mx-auto text-xl font-bold">4</div>
+                        <h3 class="mt-4 font-semibold text-slate-800">Operational Standoff</h3>
+                        <p class="mt-1 text-sm text-slate-500">The DJI H20T's 23x zoom allows inspection from a safe distance, drastically reducing EMI exposure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cost" class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Cost & Viability Analysis</h2>
+                    <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">This is a specialized industrial tool. The cost reflects the high-performance, reliable components required for safe operation near critical infrastructure. The chart below breaks down the estimated prototype cost of ~$22,000 USD / ~₹18,40,000 INR.</p>
+                </div>
+                <div class="mt-12 max-w-4xl mx-auto bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h3 class="font-semibold text-lg text-slate-800 text-center">Prototype Bill of Materials (BOM) Breakdown</h3>
+                    <div class="chart-container mt-4" style="height: 500px; max-width: 800px;">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm">
+            <p>Patrol 1: Interactive Design Brief</p>
+            <p class="mt-1">Based on the engineering report for Group 5: Infrastructure Inspection.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const anatomyData = {
+        frame: {
+            title: 'Airframe: Tarot X8-II Class',
+            content: `A <strong>1100-1300mm class heavy-lift frame</strong> made of 3K carbon fiber is selected. This large size is required to provide clearance for the highly efficient 28-inch propellers. Carbon fiber offers an exceptional strength-to-weight ratio and vibration damping, crucial for stable flight and clear sensor data. A folding design enhances portability for field deployment.`,
+            spec: 'Material: Carbon Fiber | Weight: ~3.5kg | Features: Folding Arms, IP43 Rating'
+        },
+        propulsion: {
+            title: 'Propulsion: T-Motor U10 II & Flame ESC',
+            content: `The system is optimized for maximum efficiency. <strong>T-Motor U10 II KV100 motors</strong> spin large <strong>28-inch T-Motor G28x9.2 carbon fiber propellers</strong> slowly but with immense torque. This is the most energy-efficient way to generate lift. <strong>T-Motor Flame 80A 12S HV ESCs</strong> provide reliable, smooth power management under load.`,
+            spec: 'Motor: 10.6kg Max Thrust, IP55 | ESC: 80A Continuous | Prop: 28-inch Carbon Fiber'
+        },
+        power: {
+            title: 'Power: Tattu 12S Li-Ion Pack',
+            content: `A <strong>Gens Ace Tattu 12S 22,000mAh 25C Li-Ion</strong> battery pack is chosen over standard LiPo. Li-Ion offers superior energy density (185 Wh/kg), which is the single most important factor for maximizing flight time. Its lower discharge rate is perfectly sufficient for the steady power draw of an inspection mission.`,
+            spec: 'Capacity: 22,000mAh | Voltage: 44.4V | Weight: ~4.0kg | Energy: 976.8 Wh'
+        },
+        payload: {
+            title: 'Payload: DJI H20T & Velodyne Puck',
+            content: `A 3-axis gimbal stabilizes an integrated sensor package. It includes: <br>1. <strong>DJI Zenmuse H20T:</strong> 20MP Zoom Camera (23x Hybrid), 640x512 Thermal Camera. <br>2. <strong>Velodyne Puck LITE:</strong> 100m range, 300,000 pts/sec LiDAR sensor for 3D mapping.`,
+            spec: 'Sensors: EO/IR Zoom, Radiometric Thermal, 16-channel LiDAR'
+        },
+        avionics: {
+            title: 'Avionics: Pixhawk 4 & ArduPilot',
+            content: `The system is commanded by a <strong>Holybro Pixhawk 4</strong> flight controller running the mature and robust <strong>ArduPilot</strong> firmware. Navigation is handled by a <strong>Holybro M8N GPS with RTK</strong> capability, providing centimeter-level positioning accuracy for precise geotagging of all sensor data.`,
+            spec: 'FC: 32-bit ARM Cortex M7 | Firmware: ArduPilot Copter | GPS: RTK Enabled'
+        }
+    };
+
+    const detailsPanel = document.getElementById('details-panel');
+    const anatomyParts = document.querySelectorAll('.anatomy-part');
+
+    function updateDetails(part) {
+        const data = anatomyData[part];
+        if (data) {
+            detailsPanel.innerHTML = `
+                <h3 class="text-lg font-bold text-slate-900">${data.title}</h3>
+                <p class="mt-2 text-sm text-slate-600">${data.content}</p>
+                <div class="mt-4 pt-4 border-t border-slate-200">
+                    <p class="text-xs font-semibold text-sky-700 tracking-wider uppercase">Key Specifications</p>
+                    <p class="text-sm text-slate-800 font-medium">${data.spec}</p>
+                </div>
+            `;
+        }
+    }
+
+    anatomyParts.forEach(part => {
+        part.addEventListener('click', () => {
+            const partName = part.dataset.part;
+            updateDetails(partName);
+            
+            anatomyParts.forEach(p => p.classList.remove('active'));
+            document.querySelectorAll(`[data-part="${partName}"]`).forEach(p => p.classList.add('active'));
+        });
+    });
+
+    updateDetails('frame');
+    document.querySelector('[data-part="frame"]').classList.add('active');
+
+
+    const weightData = {
+        labels: ['Power (Battery)', 'Airframe', 'Propulsion', 'Payload', 'Avionics/Other'],
+        datasets: [{
+            label: 'Weight (kg)',
+            data: [4.00, 3.50, 2.34, 1.72, 1.00],
+            backgroundColor: [
+                '#0ea5e9', // sky-500
+                '#64748b', // slate-500
+                '#38bdf8', // sky-400
+                '#f59e0b', // amber-500
+                '#94a3b8'  // slate-400
+            ],
+            borderColor: '#f8fafc',
+            borderWidth: 2,
+            hoverOffset: 4
+        }]
+    };
+
+    const weightChartCtx = document.getElementById('weightChart').getContext('2d');
+    new Chart(weightChartCtx, {
+        type: 'doughnut',
+        data: weightData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: { size: 12 },
+                        color: '#475569' // slate-600
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed.toFixed(2) + ' kg';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const costData = {
+        labels: ['Payload: DJI H20T', 'Payload: Velodyne Puck', 'GCS: Herkules', 'Frame: Tarot X8-II', 'Motors: T-Motor U10 II', 'Battery: Tattu 12S 22Ah', 'Propellers: T-Motor G28', 'GPS: Holybro RTK', 'ESCs: T-Motor Flame 80A', 'FC: Pixhawk 4', 'Misc'],
+        datasets: [{
+            label: 'Cost (INR)',
+            data: [835000, 175350, 167000, 125250, 113560, 100200, 50100, 50100, 40080, 12525, 166900].map(v => v),
+            backgroundColor: '#0ea5e9',
+            borderColor: '#0284c7',
+            borderWidth: 1,
+            borderRadius: 4
+        }]
+    };
+
+    const costChartCtx = document.getElementById('costChart').getContext('2d');
+    new Chart(costChartCtx, {
+        type: 'bar',
+        data: costData,
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(context.parsed.x);
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        callback: function(value, index, ticks) {
+                            return '₹' + (value/100000).toFixed(1) + 'L';
+                        },
+                        color: '#475569'
+                    },
+                    grid: {
+                        color: '#e2e8f0' // slate-200
+                    }
+                },
+                y: {
+                     ticks: {
+                         color: '#475569'
+                     },
+                     grid: {
+                         display: false
+                     }
+                }
+            }
+        }
+    });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === entry.target.id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: "-50% 0px -50% 0px" });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+});
+</script>
+</body>
+</html>
