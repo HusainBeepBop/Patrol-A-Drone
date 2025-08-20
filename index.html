@@ -100,6 +100,10 @@
                         <div class="text-3xl font-bold text-sky-600">10<span class="text-xl">km</span></div>
                         <div class="mt-1 text-sm font-medium text-slate-500">Operational Range</div>
                     </div>
+                    <div class="kpi-card bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold text-sky-600">1100 - 1300 <span class="text-xl">mm</span></div>
+                        <div class="mt-1 text-sm font-medium text-slate-500">Dimensions</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -113,7 +117,7 @@
 
                 <div class="mt-12 lg:grid lg:grid-cols-3 lg:gap-8 items-center">
                     <div class="lg:col-span-1">
-                        <div id="details-panel" class="bg-white p-6 rounded-lg shadow-md border border-slate-200 min-h-[360px]">
+                        <div id="details-panel" class="bg-white p-6 rounded-lg shadow-md border border-slate-200 min-h-[450px]">
                             </div>
                     </div>
                     <div class="mt-10 lg:mt-0 lg:col-span-2 flex justify-center items-center">
@@ -121,7 +125,7 @@
                             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 bg-slate-300 rounded-lg anatomy-part" data-part="frame">
                                 <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-slate-700">Frame</span>
                             </div>
-                            <div class="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
+                            <div class="absolute top-0 left-0 w-12 h-12 md:w-16 md-h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
                                 <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold">Motor</span>
                             </div>
                             <div class="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-slate-200 rounded-full anatomy-part" data-part="propulsion">
@@ -311,26 +315,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const anatomyData = {
         frame: {
             title: 'Airframe: Tarot X8-II Class',
+            imageUrl: 'https://www.tarot-rc.com/image/cache/catalog/product/TL8X000-PRO-01-1000x1000.jpg',
             content: `A <strong>1100-1300mm class heavy-lift frame</strong> made of 3K carbon fiber is selected. This large size is required to provide clearance for the highly efficient 28-inch propellers. Carbon fiber offers an exceptional strength-to-weight ratio and vibration damping, crucial for stable flight and clear sensor data. A folding design enhances portability for field deployment.`,
             spec: 'Material: Carbon Fiber | Weight: ~3.5kg | Features: Folding Arms, IP43 Rating'
         },
         propulsion: {
-            title: 'Propulsion: T-Motor U10 II & Flame ESC',
-            content: `The system is optimized for maximum efficiency. <strong>T-Motor U10 II KV100 motors</strong> spin large <strong>28-inch T-Motor G28x9.2 carbon fiber propellers</strong> slowly but with immense torque. This is the most energy-efficient way to generate lift. <strong>T-Motor Flame 80A 12S HV ESCs</strong> provide reliable, smooth power management under load.`,
-            spec: 'Motor: 10.6kg Max Thrust, IP55 | ESC: 80A Continuous | Prop: 28-inch Carbon Fiber'
+            title: 'Propulsion: T-Motor U10 II & Propeller',
+            imageUrl: 'https://store.tmotor.com/images/2021/04/06/1617679624536605.jpg',
+            content: `The system is optimized for maximum efficiency. <strong>T-Motor U10 II KV100 motors</strong> spin large <strong>28x9.2-inch T-Motor carbon fiber propellers</strong> slowly but with immense torque. The 9.2-inch pitch provides a balance of thrust and efficiency for endurance missions. <strong>T-Motor Flame 80A 12S HV ESCs</strong> provide reliable, smooth power management under load.`,
+            spec: 'Motor: 10.6kg Max Thrust, IP55 | ESC: 80A Continuous | Prop: 28x9.2-inch Carbon Fiber'
         },
         power: {
             title: 'Power System: Battery & Distribution',
+            imageUrl: 'https://www.genstattu.com/media/catalog/product/cache/725x550/a/6/a6064f7836798e1693510c4d2d7f877f/t/a/ta-25c-22000-12s1p-as150_2_.jpg',
             content: `A <strong>Gens Ace Tattu 12S 22,000mAh 25C Li-Ion</strong> battery pack is chosen over standard LiPo for its superior energy density (185 Wh/kg). Power from this pack is managed by a <strong>Holybro PM02D Power Distribution Board (PDB)</strong>, which safely distributes clean, regulated power to the ESCs and avionics while providing critical voltage and current telemetry to the flight controller.`,
             spec: 'Battery: 22,000mAh, 44.4V, 976.8 Wh | PDB: Holybro PM02D, 14S Max, 120A Cont.'
         },
         payload: {
             title: 'Payload: DJI H20T & Velodyne Puck',
+            imageUrl: 'https://enterprise-insights.dji.com/hubfs/Zenmuse-H20T-6.png',
             content: `A 3-axis gimbal stabilizes an integrated sensor package. It includes: <br>1. <strong>DJI Zenmuse H20T:</strong> 20MP Zoom Camera (23x Hybrid), 640x512 Thermal Camera. <br>2. <strong>Velodyne Puck LITE:</strong> 100m range, 300,000 pts/sec LiDAR sensor for 3D mapping.`,
             spec: 'Sensors: EO/IR Zoom, Radiometric Thermal, 16-channel LiDAR'
         },
         avionics: {
             title: 'Avionics: Pixhawk 4 & ArduPilot',
+            imageUrl: 'https://holybro.com/cdn/shop/products/Pixhawk4_1_1024x1024.jpg?v=1571439589',
             content: `The system is commanded by a <strong>Holybro Pixhawk 4</strong> flight controller running the mature and robust <strong>ArduPilot</strong> firmware. Navigation is handled by a <strong>Holybro M8N GPS with RTK</strong> capability, providing centimeter-level positioning accuracy for precise geotagging of all sensor data.`,
             spec: 'FC: 32-bit ARM Cortex M7 | Firmware: ArduPilot Copter | GPS: RTK Enabled'
         }
@@ -344,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data) {
             detailsPanel.innerHTML = `
                 <h3 class="text-lg font-bold text-slate-900">${data.title}</h3>
+                <img src="${data.imageUrl}" alt="${data.title}" class="w-full h-40 object-contain rounded-lg my-4 bg-slate-100 p-2 border border-slate-200">
                 <p class="mt-2 text-sm text-slate-600">${data.content}</p>
                 <div class="mt-4 pt-4 border-t border-slate-200">
                     <p class="text-xs font-semibold text-sky-700 tracking-wider uppercase">Key Specifications</p>
