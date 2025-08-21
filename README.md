@@ -38,26 +38,26 @@ The objective is to design a mission-ready quadrotor for long loiter time, tailo
 - 1100-1300mm heavy-lift frame, 3K carbon fiber
 - Folding arms for portability, IP43 rating
 - Strength-to-weight ratio and vibration damping for stable flight
-
+![Frame](assets/frame.png)
 **Propulsion: T-Motor U10 II & Propeller**
 - U10 II KV100 motors, 10.6kg max thrust
 - 28x9.2-inch carbon fiber propellers for efficiency
 - Flame 80A 12S HV ESCs for smooth power management
-
+![Motor](assets/rotor.png)
 **Power System: Battery & Distribution**
 - Gens Ace Tattu 12S 22,000mAh 25C Li-Ion battery (185 Wh/kg)
 - Holybro PM02D Power Distribution Board (PDB), 14S max, 120A cont.
 - Clean, regulated power and telemetry to flight controller
-
+![Power](assets/power.png)
 **Payload: DJI H20T & Velodyne Puck**
 - DJI Zenmuse H20T: 20MP zoom, 640x512 thermal camera
 - Velodyne Puck LITE: 100m range, 300,000 pts/sec LiDAR
 - 3-axis gimbal for stabilization
-
+![Payload](assets/Payload.png)
 **Avionics: Pixhawk 4 & ArduPilot**
 - Holybro Pixhawk 4 flight controller, ArduPilot firmware
 - Holybro M8N GPS with RTK for centimeter-level accuracy
-
+![Avionics](assets/avionics.png)
 ---
 
 
