@@ -32,6 +32,35 @@ The objective is to design a mission-ready quadrotor for long loiter time, tailo
 
 ---
 
+### Subsystem Components & Rationale
+
+**Airframe: Tarot X8-II Class**
+- 1100-1300mm heavy-lift frame, 3K carbon fiber
+- Folding arms for portability, IP43 rating
+- Strength-to-weight ratio and vibration damping for stable flight
+
+**Propulsion: T-Motor U10 II & Propeller**
+- U10 II KV100 motors, 10.6kg max thrust
+- 28x9.2-inch carbon fiber propellers for efficiency
+- Flame 80A 12S HV ESCs for smooth power management
+
+**Power System: Battery & Distribution**
+- Gens Ace Tattu 12S 22,000mAh 25C Li-Ion battery (185 Wh/kg)
+- Holybro PM02D Power Distribution Board (PDB), 14S max, 120A cont.
+- Clean, regulated power and telemetry to flight controller
+
+**Payload: DJI H20T & Velodyne Puck**
+- DJI Zenmuse H20T: 20MP zoom, 640x512 thermal camera
+- Velodyne Puck LITE: 100m range, 300,000 pts/sec LiDAR
+- 3-axis gimbal for stabilization
+
+**Avionics: Pixhawk 4 & ArduPilot**
+- Holybro Pixhawk 4 flight controller, ArduPilot firmware
+- Holybro M8N GPS with RTK for centimeter-level accuracy
+
+---
+
+
 ## Assignment Requirements Fulfilled
 - Mission-driven engineering design
 - Subsystem selection and justification
@@ -63,3 +92,27 @@ To view the project files:
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
+
+
+## Frequently Asked Questions
+
+**Q1: Why was a heavy-lift carbon fiber frame chosen?**
+A: To support large propellers and heavy payloads, while ensuring vibration damping and portability.
+
+**Q2: What makes the propulsion system efficient?**
+A: Large, slow-spinning carbon fiber propellers paired with high-torque motors and reliable ESCs maximize thrust and endurance.
+
+**Q3: Why use Li-Ion batteries over LiPo?**
+A: Li-Ion offers higher energy density, enabling longer flight times critical for inspection missions.
+
+**Q4: What is the role of the payload?**
+A: The integrated sensor suite (EO/IR camera, LiDAR) enables detailed inspection and 3D mapping from a safe distance.
+
+**Q5: How is precise navigation achieved?**
+A: RTK GPS and robust flight control firmware ensure accurate geotagging and stable autonomous flight.
+
+**Q6: How does the drone mitigate EMI near power lines?**
+A: Smart placement of sensors, physical shielding, advanced software filtering, and operational standoff strategies.
+
+**Q7: What drives the cost of the prototype?**
+A: The payload (DJI H20T and Velodyne Puck) accounts for over 50% of the total cost due to its advanced capabilities.
