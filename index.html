@@ -190,44 +190,86 @@
             </p>
 
             <div class="mt-8 space-y-8">
-                <!-- AUW Calculation -->
+                <!-- All-Up Weight Calculation -->
                 <div class="p-6 bg-[#0d1117] rounded-lg border border-[#2d3844]">
-                    <h3 class="text-2xl font-semibold text-white mb-2">4.1 All-Up Weight (AUW)</h3>
-                    <p class="text-gray-400">The sum of all components.</p>
+                    <h3 class="text-2xl font-semibold text-white mb-2">4.1 All-Up Weight (AUW) Calculation</h3>
+                    <p class="text-gray-400">The AUW is the sum of all components.</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-400 space-y-1">
+                        <li><span class="font-semibold text-white">Airframe (Tarot X4):</span> 1.50 kg</li>
+                        <li><span class="font-semibold text-white">Motors (4x T-Motor U5):</span> 0.78 kg</li>
+                        <li><span class="font-semibold text-white">ESCs (4x T-Motor AIR 40A):</span> 0.104 kg</li>
+                        <li><span class="font-semibold text-white">Propellers (4x 16x5.4):</span> 0.112 kg</li>
+                        <li><span class="font-semibold text-white">Batteries (2x Tattu 6S 8000mAh):</span> 2.28 kg</li>
+                        <li><span class="font-semibold text-white">Payload (DJI Zenmuse H20T):</span> 0.83 kg</li>
+                        <li><span class="font-semibold text-white">Avionics (Pixhawk Cube Orange+):</span> 0.072 kg</li>
+                        <li><span class="font-semibold text-white">Miscellaneous:</span> 0.406 kg</li>
+                    </ul>
                     <div class="mt-4 text-center">
-                        <span class="text-2xl font-bold text-transparent gradient-main text-gradient">6.084 kg</span>
+                        <p class="text-lg font-bold text-transparent gradient-main text-gradient">Total All-Up Weight (AUW): 6.084 kg</p>
                     </div>
                 </div>
 
                 <!-- Payload-to-AUW Ratio -->
                 <div class="p-6 bg-[#0d1117] rounded-lg border border-[#2d3844]">
-                    <h3 class="text-2xl font-semibold text-white mb-2">4.2 Payload-to-AUW Ratio</h3>
-                    <p class="text-gray-400">The key performance indicator.</p>
-                    <div class="mt-4 text-center">
-                        <span class="text-2xl font-bold text-transparent gradient-main text-gradient">13.6%</span>
+                    <h3 class="text-2xl font-semibold text-white mb-2">4.2 Payload-to-Total-Weight Ratio</h3>
+                    <p class="text-gray-400">This is the key performance indicator for this project.</p>
+                    <p class="mt-4 text-sm text-gray-400">Formula: <code class="text-white">Payload-to-AUW Ratio = Payload Weight / Total AUW</code></p>
+                    <div class="mt-2 text-center">
+                        <p class="text-lg font-bold text-transparent gradient-main text-gradient">Ratio: 13.6%</p>
                     </div>
-                    <p class="mt-4 text-gray-400 text-sm">Conclusion: While the initial 30% target was not attainable, this is a strong and realistic value for a professional-grade drone.</p>
+                    <p class="mt-4 text-gray-400 text-sm">Conclusion: The final ratio of 13.6% confirms that the initial target of 30% is not practically attainable with a professional payload of this weight. This ratio, however, is a strong, realistic value for a drone of this class.</p>
                 </div>
                 
                 <!-- TWR Calculation -->
                 <div class="p-6 bg-[#0d1117] rounded-lg border border-[#2d3844]">
                     <h3 class="text-2xl font-semibold text-white mb-2">4.3 Thrust-to-Weight Ratio (TWR)</h3>
-                    <p class="text-gray-400">A TWR above 2:1 is recommended for stable flight.</p>
-                    <div class="mt-4 text-center">
-                        <span class="text-2xl font-bold text-transparent gradient-main text-gradient">4.6:1</span>
+                    <p class="text-gray-400">A TWR above 2:1 is recommended for stable flight and maneuverability.</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-400 space-y-1">
+                        <li><span class="font-semibold text-white">Max Thrust per Motor:</span> 7 kg</li>
+                        <li><span class="font-semibold text-white">Total System Thrust:</span> 4 motors x 7 kg/motor = 28 kg</li>
+                    </ul>
+                    <div class="mt-2 text-center">
+                        <p class="text-lg font-bold text-transparent gradient-main text-gradient">TWR: 4.6:1</p>
                     </div>
-                    <p class="mt-4 text-gray-400 text-sm">Conclusion: An exceptionally high TWR, providing superior stability and a large power reserve.</p>
+                    <p class="mt-4 text-gray-400 text-sm">Conclusion: The TWR of 4.6:1 is exceptionally high, providing a large power reserve for vertical ascent, a high degree of control, and superior stability in high winds.</p>
                 </div>
 
-                <!-- Flight Endurance -->
+                <!-- Flight Endurance Calculation -->
                 <div class="p-6 bg-[#0d1117] rounded-lg border border-[#2d3844]">
-                    <h3 class="text-2xl font-semibold text-white mb-2">4.4 Flight Endurance</h3>
-                    <p class="text-gray-400">Estimated hover time under ideal conditions.</p>
-                    <div class="mt-4 text-center">
-                        <span class="text-2xl font-bold text-transparent gradient-main text-gradient">~28.2 minutes</span>
+                    <h3 class="text-2xl font-semibold text-white mb-2">4.4 Flight Endurance Calculation</h3>
+                    <p class="text-gray-400">This calculation estimates the hover time under ideal conditions.</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-400 space-y-1">
+                        <li><span class="font-semibold text-white">Hover Thrust per Motor:</span> 6.084 kg / 4 motors = 1.521 kg</li>
+                        <li><span class="font-semibold text-white">Total Hover Current:</span> 4 motors x 8.5 A/motor = 34 A</li>
+                        <li><span class="font-semibold text-white">Total Battery Capacity:</span> 16,000 mAh (16 Ah)</li>
+                    </ul>
+                    <div class="mt-2 text-center">
+                        <p class="text-lg font-bold text-transparent gradient-main text-gradient">Endurance: ~28.2 minutes</p>
                     </div>
-                    <p class="mt-4 text-gray-400 text-sm">Conclusion: Meets the requirements for a professional inspection mission.</p>
+                    <p class="mt-4 text-gray-400 text-sm">Conclusion: The estimated flight endurance of approximately 28 minutes is a strong result and meets the requirements for a professional inspection mission.</p>
                 </div>
+
+                <!-- Maximum Payload Capacity and Flight Endurance -->
+                <div class="p-6 bg-[#0d1117] rounded-lg border border-[#2d3844]">
+                    <h3 class="text-2xl font-semibold text-white mb-2">4.5 Maximum Payload Capacity and Flight Endurance</h3>
+                    <p class="text-gray-400">To determine the Patrol-Pro's full potential, we calculate the maximum payload it can lift while maintaining a minimum TWR of 2:1 for safe operation.</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-400 space-y-1">
+                        <li><span class="font-semibold text-white">Max Takeoff Weight (MTOW):</span> Total Thrust / Minimum TWR = 28 kg / 2 = 14 kg</li>
+                        <li><span class="font-semibold text-white">Empty Weight:</span> 5.254 kg</li>
+                    </ul>
+                    <div class="mt-2 text-center">
+                        <p class="text-lg font-bold text-transparent gradient-main text-gradient">Max Payload Capacity: ~8.75 kg</p>
+                    </div>
+                    <ul class="list-disc list-inside mt-4 text-gray-400 space-y-1">
+                        <li><span class="font-semibold text-white">Power at Max Weight:</span> 14 kg x 110 W/kg = 1540 W</li>
+                        <li><span class="font-semibold text-white">Usable Energy (80% rule):</span> 355.2 Wh x 0.8 = 284.16 Wh</li>
+                    </ul>
+                    <div class="mt-2 text-center">
+                        <p class="text-lg font-bold text-transparent gradient-main text-gradient">Endurance with Max Payload: ~11.1 minutes</p>
+                    </div>
+                    <p class="mt-4 text-gray-400 text-sm">Conclusion: The Patrol-Pro has a theoretical maximum payload capacity of approximately 8.75 kg. When flying with this maximum payload, the estimated flight endurance is reduced to roughly 11 minutes.</p>
+                </div>
+
             </div>
         </div>
     </section>
